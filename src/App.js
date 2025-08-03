@@ -9,7 +9,7 @@ const ResearchPaperAnalyzer = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
-  const [discussionHistory, setDiscussionHistory]`` = useState([]);
+  const [discussionHistory, setDiscussionHistory] = useState([]);
   const [userQuestion, setUserQuestion] = useState('');
   const [conversationMemory, setConversationMemory] = useState({
     paperTitle: '',
