@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Upload, FileText, Play, Pause, Volume2, MessageSquare, Brain, Loader2, Download } from 'lucide-react';
+import { Upload, FileText, Play, Pause, Volume2, MessageSquare, Brain, Loader2 } from 'lucide-react';
 
 const ResearchPaperAnalyzer = () => {
   const [uploadedFile, setUploadedFile] = useState(null);
@@ -50,13 +50,11 @@ const ResearchPaperAnalyzer = () => {
         reader.readAsDataURL(file);
       });
 
-      // Extract text content using Claude API via CORS proxy
-      const response = await fetch("https://cors-anywhere.herokuapp.com/https://api.anthropic.com/v1/messages", {
+      // Extract text content using Claude API via backend proxy
+      const response = await fetch("https://research-paper-analyzer-backend.vercel.app/api/analyze", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-Requested-With": "XMLHttpRequest",
-          "x-api-key": process.env.REACT_APP_ANTHROPIC_API_KEY || "your-api-key-here"
         },
         body: JSON.stringify({
           model: "claude-sonnet-4-20250514",
@@ -106,12 +104,10 @@ const ResearchPaperAnalyzer = () => {
     setIsAnalyzing(true);
     
     try {
-      const response = await fetch("https://cors-anywhere.herokuapp.com/https://api.anthropic.com/v1/messages", {
+      const response = await fetch("https://research-paper-analyzer-backend.vercel.app/api/analyze", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-Requested-With": "XMLHttpRequest",
-          "x-api-key": process.env.REACT_APP_ANTHROPIC_API_KEY || "your-api-key-here"
         },
         body: JSON.stringify({
           model: "claude-sonnet-4-20250514",
@@ -202,12 +198,10 @@ Instructions:
 
 Please provide a comprehensive answer that takes into account all the context and previous discussion.`;
 
-      const response = await fetch("https://cors-anywhere.herokuapp.com/https://api.anthropic.com/v1/messages", {
+      const response = await fetch("https://research-paper-analyzer-backend.vercel.app/api/analyze", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-Requested-With": "XMLHttpRequest",
-          "x-api-key": process.env.REACT_APP_ANTHROPIC_API_KEY || "your-api-key-here"
         },
         body: JSON.stringify({
           model: "claude-sonnet-4-20250514",
