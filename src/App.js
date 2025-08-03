@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Upload, FileText, Play, Pause, Volume2, MessageSquare, Brain, Loader2 } from 'lucide-react';
+import { ANTHROPIC_API_KEY } from './config';
 
 const ResearchPaperAnalyzer = () => {
   const [uploadedFile, setUploadedFile] = useState(null);
@@ -55,7 +56,7 @@ const ResearchPaperAnalyzer = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": process.env.REACT_APP_ANTHROPIC_API_KEY || "your-api-key-here"
+          "x-api-key": ANTHROPIC_API_KEY
         },
         body: JSON.stringify({
           model: "claude-sonnet-4-20250514",
@@ -109,7 +110,7 @@ const ResearchPaperAnalyzer = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": process.env.REACT_APP_ANTHROPIC_API_KEY || "your-api-key-here"
+          "x-api-key": ANTHROPIC_API_KEY
         },
         body: JSON.stringify({
           model: "claude-sonnet-4-20250514",
@@ -204,7 +205,7 @@ Please provide a comprehensive answer that takes into account all the context an
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "x-api-key": process.env.REACT_APP_ANTHROPIC_API_KEY || "your-api-key-here"
+          "x-api-key": ANTHROPIC_API_KEY
         },
         body: JSON.stringify({
           model: "claude-sonnet-4-20250514",
